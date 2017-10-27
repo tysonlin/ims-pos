@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "developer",
-    "password": null,
+    "password": "Dev001",
     "database": "ims-pos-dev",
     "host": "127.0.0.1",
     "port": 5432,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "tester",
-    "password": null,
+    "password": "Test001",
     "database": "ims-pos-test",
     "host": "127.0.0.1",
     "port": 5432,
