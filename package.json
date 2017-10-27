@@ -1,0 +1,35 @@
+{
+  "name": "ims-pos",
+  "version": "1.0.0",
+  "description": "RESTful API app for inventory management system POS used by multi-outlets restaurant chain",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "SET NODE_ENV=dev&& nodemon ./bin/www",
+    "test": "SET NODE_ENV=test&& mocha ./tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tysonlin/ims-pos.git"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "Inventory",
+    "Management",
+    "System"
+  ],
+  "author": "Tyson Lin (Thanyapat Sirisongkol)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tysonlin/ims-pos/issues"
+  },
+  "homepage": "https://github.com/tysonlin/ims-pos#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
