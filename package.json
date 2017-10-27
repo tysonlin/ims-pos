@@ -4,7 +4,7 @@
   "description": "RESTful API app for inventory management system POS used by multi-outlets restaurant chain",
   "main": "index.js",
   "scripts": {
-    "start:dev": "SET NODE_ENV=dev&& nodemon ./bin/www",
+    "start:dev": "SET NODE_ENV=development&& nodemon ./bin/www",
     "test": "SET NODE_ENV=test&& mocha ./tests"
   },
   "repository": {

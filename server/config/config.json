@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "developer",
+    "password": null,
+    "database": "ims-pos-dev",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "tester",
+    "password": null,
+    "database": "ims-pos-test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
