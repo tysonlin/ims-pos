@@ -1,5 +1,6 @@
 // Main resource for PostgreSQL/Node.js/Express REST API
 // https://scotch.io/tutorials/getting-started-with-node-express-and-postgres-using-sequelize
+// https://codeburst.io/sequelize-migrations-setting-up-associations-985d29b61ee7
 
 const express = require('express');
 const bodyParser = require('body-parser');
