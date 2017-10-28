@@ -1,3 +1,6 @@
+const logger = require('../log');
+
+
 const express = require('express');
 const router = express.Router();
 
@@ -11,8 +14,6 @@ router.route('/category')
         .get(categoryCtrl.list)
         .post(categoryCtrl.create);
 
-router.route('').get((req, res) => res.status(200).send({
-    msg: "Welcome to the API",
-}));
+
 
 module.exports = router;

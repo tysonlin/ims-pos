@@ -1,4 +1,5 @@
 const Category = require('../models').Category;
+const logger = require('../log');
 
 module.exports = {
     create: (req, res) => {
@@ -7,7 +8,7 @@ module.exports = {
         })
         .then(category => res.status(201).send({
             success: true,
-            msg: "Category " + category.name + " successfully created",
+            msg: `Category ${category.name} successfully created`,
             category: category
         }))
         .catch(err => res.status(400).send(err));
