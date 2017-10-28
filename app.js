@@ -27,3 +27,5 @@ app.get('*', (req, res) => res.status(200).json({
 logger.verbose('/* fallback established');
 
 module.exports = app;
+
+logger.silly('Startup looks good so far! :)');
