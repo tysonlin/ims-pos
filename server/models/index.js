@@ -7,6 +7,14 @@ const config    = require(__dirname + '/..\\config\\config.json')[env];
 const db        = {};
 var sequelize = {};
 
+// Stop deprecation warning for String based operators
+const Op = Sequelize.Op;
+config.operatorsAliases = Op;
+
+// Setup logging for sequelize => winston
+const logger = require('../log');
+config.logging = (msg) => logger.debug(msg);
+
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
