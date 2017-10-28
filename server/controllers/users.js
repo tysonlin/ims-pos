@@ -1,7 +1,7 @@
 const User = require('../models').User;
 
 module.exports = {
-    create(req, res){
+    create: (req, res) => {
         return User.create({
             username: req.body.username,
             password: req.body.password,

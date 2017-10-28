@@ -1,6 +1,3 @@
-const logger = require('../log');
-
-
 const express = require('express');
 const router = express.Router();
 
@@ -13,6 +10,11 @@ router.route('/register')
 router.route('/category')
         .get(categoryCtrl.list)
         .post(categoryCtrl.create);
+
+router.route('/category/:_id')
+        .get(categoryCtrl.retrieve)
+        .put(categoryCtrl.update)
+        .delete(categoryCtrl.delete);
 
 
 
