@@ -11,6 +11,14 @@ const cors = require('cors');
 const passport = require('passport');
 
 const logger = require('./server/log');
+const routeNameParser = require('./server/log/route-name-parser');
+
+const ApiRoutes = require('./server/routes');
+const UserRoutes = require('./server/routes/users');
+const FallbackRoutes = require('./server/routes/fallbacks')(ApiRoutes)
+
+const { unhandledExceptionsHandler } = require('./server/handlers/err-handler');
+
 const app = express();
 
 logger.verbose('express app initialized');
@@ -38,23 +46,21 @@ app.use(passport.session());
 require('./server/auth')(passport);
 logger.verbose('passport initialized');
 
-// use router to api
-const ApiRoutes = require('./server/routes');
+// use router to api and logs api endpoints
 app.use('/api', ApiRoutes);
-
-// logs api endpoints
-const routeNameParser = require('./server/log/route-name-parser');
 logger.verbose(`/api/<routes> established: ${routeNameParser.listAllLogStr(ApiRoutes.stack)}`);
 
-const UserRoutes = require('./server/routes/users');
+// use router to user and logs user endpoints
 app.use('/user', UserRoutes);
-
-// logs user endpoints
 logger.verbose(`/user/<routes> established: ${routeNameParser.listAllLogStr(UserRoutes.stack)}`);
 
-const FallbackRoutes = require('./server/routes/fallbacks')(ApiRoutes)
+// use router to fallback routes
 app.use(FallbackRoutes);
 logger.verbose('fallback routes established');
+
+// add global exception handler
+app.use(unhandledExceptionsHandler);
+logger.verbose('unhandledExceptionsHandler initialized');
 
 module.exports = app;
 

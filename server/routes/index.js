@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const config = require('../config');
 
 const categoryCtrl = require('../controllers').categories;
 const ingredientCtrl = require('../controllers').ingredients;
 const productCtrl = require('../controllers').products;
 const prodIngCtrl = require('../controllers').products_ingredients;
 
-const PROTECTED = passport.authenticate('jwt', {session: false, failureRedirect: '/unauthorized'});
+const PROTECTED = passport.authenticate(config.passportHeaderType, config.passportAuthOpts);
 
 router.route('/category')
         .get(PROTECTED, categoryCtrl.list)

@@ -21,7 +21,7 @@ module.exports = {
     },
     failureResponse: (res, err) => {
         logger.error(err);
-        const status = err.code || 500;
+        const status = err.code || err.status || 500;
         const json = {
             success: false,
             message: err.message,

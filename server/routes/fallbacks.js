@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const config = require('../config');
 
 const { failureResponse } = require('../handlers');
 const { HttpUnauthorized } = require('../validators/errors');
 
 const routeNameParser = require('../log/route-name-parser');
 
-const PROTECTED = passport.authenticate('jwt', {session: false, failureRedirect: '/unauthorized'});
+const PROTECTED = passport.authenticate(config.passportHeaderType, config.passportAuthOpts);
 
 router.route('/unauthorized')
         .get( (req, res, next) => {
