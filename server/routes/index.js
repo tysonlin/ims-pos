@@ -1,45 +1,44 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
-const userCtrl = require('../controllers').users;
 const categoryCtrl = require('../controllers').categories;
 const ingredientCtrl = require('../controllers').ingredients;
 const productCtrl = require('../controllers').products;
 const prodIngCtrl = require('../controllers').products_ingredients;
 
-router.route('/register')
-        .post(userCtrl.create);
+const PROTECTED = passport.authenticate('jwt', {session: false});
 
 router.route('/category')
-        .get(categoryCtrl.list)
-        .post(categoryCtrl.create);
+        .get(PROTECTED, categoryCtrl.list)
+        .post(PROTECTED, categoryCtrl.create);
 
 router.route('/category/:_id')
-        .get(categoryCtrl.retrieve)
-        .put(categoryCtrl.update)
-        .delete(categoryCtrl.delete);
+        .get(PROTECTED, categoryCtrl.retrieve)
+        .put(PROTECTED, categoryCtrl.update)
+        .delete(PROTECTED, categoryCtrl.delete);
 
 router.route('/ingredient')
-        .get(ingredientCtrl.list)
-        .post(ingredientCtrl.create);
+        .get(PROTECTED, ingredientCtrl.list)
+        .post(PROTECTED, ingredientCtrl.create);
 
 router.route('/ingredient/:_id')
-        .get(ingredientCtrl.retrieve)
-        .put(ingredientCtrl.update)
-        .delete(ingredientCtrl.delete);
+        .get(PROTECTED, ingredientCtrl.retrieve)
+        .put(PROTECTED, ingredientCtrl.update)
+        .delete(PROTECTED, ingredientCtrl.delete);
 
 router.route('/product')
-        .get(productCtrl.list)
-        .post(productCtrl.create);
+        .get(PROTECTED, productCtrl.list)
+        .post(PROTECTED, productCtrl.create);
 
 router.route('/product/:_id')
-        .get(productCtrl.retrieve)
-        .put(productCtrl.update)
-        .delete(productCtrl.delete);
+        .get(PROTECTED, productCtrl.retrieve)
+        .put(PROTECTED, productCtrl.update)
+        .delete(PROTECTED, productCtrl.delete);
 
 router.route('/product/:_id/ingredients/:Ing_id')
-        .put(prodIngCtrl.associate)
-        .delete(prodIngCtrl.dissociate);
+        .put(PROTECTED, prodIngCtrl.associate)
+        .delete(PROTECTED, prodIngCtrl.dissociate);
 
 
 

@@ -9,6 +9,13 @@ module.exports = {
             success: true,
             message: msg
         };
+        if(data.token){
+            json['token'] = data.token;
+            data.token = undefined; // << doesn't make a diff - token doesn't show in data eventhough not scrub
+        }
+        if(data.password){ // scrub off password field if there is one
+            data.password = undefined;
+        }
         json['data'] = data;
         return res.status(status).json(json);
     },

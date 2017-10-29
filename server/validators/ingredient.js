@@ -22,7 +22,7 @@ module.exports = {
                 if( (!stock && stock != 0) || !onlyNumbers(stock) || parseInt(stock) < 0){
                     throw new ClientError("Variable 'stock' is empty, or not an integer, or a negative number");
                 }
-                resolve([name, unitPrice, stock]);
+                resolve(data);
             }
         });
     }

@@ -23,7 +23,7 @@ module.exports = {
                 if( (!Category_id && parseInt(Category_id) != 0) || !onlyNumbers(Category_id) || parseInt(Category_id) < 0){
                     throw new ClientError("Variable 'Category_id' is empty, or not a number, or a negative number");
                 }
-                resolve([name, price, Category_id]);
+                resolve(data);
             }
         });
     }
