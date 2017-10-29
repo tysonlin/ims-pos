@@ -37,7 +37,7 @@ router.route('/product/:_id')
         .put(PROTECTED, productCtrl.update)
         .delete(PROTECTED, productCtrl.delete);
 
-router.route('/product/:_id/ingredients/:Ing_id')
+router.route('/product/:_id/ingredient/:Ing_id')
         .put(PROTECTED, prodIngCtrl.associate)
         .delete(PROTECTED, prodIngCtrl.dissociate);
 
