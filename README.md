@@ -13,7 +13,7 @@ RESTful API app for inventory management system POS used by multi-outlets restau
 
 # List of user endpoints
 
- `/user/register `
+* `/user/register `
  [`POST`] register a new user account for api access authentication
  Json parameters[required]: 
     `username:string` (allow A-Z, a-z, 0-9, more than 4 characters)
@@ -23,7 +23,7 @@ RESTful API app for inventory management system POS used by multi-outlets restau
  Return: Json response on success (201) with new user data, or bad input and other errors (400)
 
  
- `/user/auth `
+* `/user/auth `
  [`POST`] authenticate the registered user's credentials to retreive the authentication token
  Json parameters[required]:
     `username:string`
@@ -61,7 +61,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
 
 *All of the following routes are secured. Authentication token is required to use, otherwise HttpUnathorized (401) will be returned*
 
- `/api/category `
+* `/api/category `
  [`GET`] get all categories
  Parameters: None
  Return: Json response on success (200) 
@@ -72,7 +72,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
  Return: Json response on success (201) with category data, or error (400)
 
 
- `/api/category/:_id`
+* `/api/category/:_id`
  [`GET`] get a single category
  Url parameter: 
     `_id:integer`
@@ -92,7 +92,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
  Note: Delete may not be possible if the category is associated to a product
 
 
- `/api/ingredient` 
+* `/api/ingredient` 
  [`GET`] get all ingredients
  Parameters: None
  Return: Json response on success (200) 
@@ -105,7 +105,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
  Return: Json response on success (201) with ingredient data, or error (400)
 
 
- `/api/ingredient/:_id` 
+* `/api/ingredient/:_id` 
  [`GET`] get a single ingredient
  Url parameter: 
     `_id:integer`
@@ -127,7 +127,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
  Note: Delete may not be possible if the ingredient is associated to a product
 
 
- `/api/product` 
+* `/api/product` 
  [`GET`] get the list of all products
  Parameters: None
  Return: Json response on success (200) 
@@ -139,7 +139,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
     `Category_id:Category` Category_id must have already been created
  Return: Json response on success (201) with new product data, or error (400)
 
- `/api/product/:_id` 
+* `/api/product/:_id` 
  [`GET`] get one product
  Url parameter:
     `_id:integer`
@@ -160,7 +160,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
  Return: Response code (204) on success with empty body, or HttpNotFound (404)
  Note: Delete may not be possible if the product is associated to a ingredient
 
- `/api/product/:_id/ingredient/:Ing_id` 
+* `/api/product/:_id/ingredient/:Ing_id` 
  [`PUT`] create association between product and ingredient
  Url parameter: 
     `_id:integer`
