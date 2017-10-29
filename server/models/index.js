@@ -21,6 +21,9 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// verify connection
+sequelize.authenticate().catch(err => {logger.error(err)});
+
 fs
   .readdirSync(__dirname)
   .filter(file => {
