@@ -41,7 +41,11 @@ const logger = createLogger({
             filename: logDir + '/unhandledExceptions.log',
             timestamp: tsFormat,
             prettyPrint: true
-          })
+        }),
+        new (transports.Console)({
+          colorize: true,
+          timestamp: tsFormat
+        })
     ],
     exitOnError: false
 });
@@ -54,14 +58,14 @@ logger.stream = {
 };
 
 // Log error to console only if in dev env
-if(env === 'development'){
-  logger.exceptions.handle(
-    new (transports.Console)({
-      colorize: true,
-      timestamp: tsFormat
-    })
-  );
-}
+// if(env === 'development'){
+//   logger.exceptions.handle(
+//     new (transports.Console)({
+//       colorize: true,
+//       timestamp: tsFormat
+//     })
+//   );
+// }
 
 
 // Extend logger object to properly log 'Error' types
