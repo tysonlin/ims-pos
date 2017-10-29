@@ -7,7 +7,7 @@ const ingredientCtrl = require('../controllers').ingredients;
 const productCtrl = require('../controllers').products;
 const prodIngCtrl = require('../controllers').products_ingredients;
 
-const PROTECTED = passport.authenticate('jwt', {session: false});
+const PROTECTED = passport.authenticate('jwt', {session: false, failureRedirect: '/unauthorized'});
 
 router.route('/category')
         .get(PROTECTED, categoryCtrl.list)

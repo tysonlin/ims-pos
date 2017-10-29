@@ -52,10 +52,9 @@ app.use('/user', UserRoutes);
 // logs user endpoints
 logger.verbose(`/user/<routes> established: ${routeNameParser.listAllLogStr(UserRoutes.stack)}`);
 
-app.use('*', (req, res) => res.status(200).json({
-    msg: 'Welcome. Please refer to /api/<routes>, where <routes> are the following to access functionalities',
-    routes: routeNameParser.listAllJson(ApiRoutes.stack)
-}));
+const FallbackRoutes = require('./server/routes/fallbacks')(ApiRoutes)
+app.use(FallbackRoutes);
+logger.verbose('fallback routes established');
 
 module.exports = app;
 
