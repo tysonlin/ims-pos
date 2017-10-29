@@ -61,134 +61,133 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
 
 *All of the following routes are secured. Authentication token is required to use, otherwise HttpUnathorized (401) will be returned*
 
-* `/api/category `
- * [`GET`] get all categories
+**`/api/category`**
+    * [`GET`] get all categories
 
- Parameters: None
+    Parameters: None
 
- Return: Json response on success (200) 
+    Return: Json response on success (200) 
 
- * [`POST`] add one category
+    * [`POST`] add one category
 
- Json parameter[required]:  
-    `name:string`
+    Json parameter[required]:  
+        `name:string`
 
- Return: Json response on success (201) with category data, or error (400)
+    Return: Json response on success (201) with category data, or error (400)
 
 
-* `/api/category/:_id`
- * [`GET`] get a single category
+**`/api/category/:_id`**
+    * [`GET`] get a single category
 
- Url parameter: 
-    `_id:integer`
+        Url parameter: 
+            `_id:integer`
 
- Return: Json response on success (200) with category data, or HttpNotFound(404)
+        Return: Json response on success (200) with category data, or HttpNotFound(404)
  
- * [`PUT`] update a single category
+    * [`PUT`] update a single category
 
- Url parameter: 
-    `_id:integer`
+        Url parameter: 
+            `_id:integer`
 
- Json parameter[required]:  
-    `name:string`
+        Json parameter[required]:  
+            `name:string`
 
- Return: Json response on success (200) with category data, or HttpNotFound (404)
+        Return: Json response on success (200) with category data, or HttpNotFound (404)
  
- * [`DELETE`] delete a single category
+    * [`DELETE`] delete a single category
 
- Url parameter: 
-    `_id:integer`
+        Url parameter: 
+            `_id:integer`
 
- Return: Response code (204) on success with empty body, or HttpNotFound (404)
+        Return: Response code (204) on success with empty body, or HttpNotFound (404)
 
- Note: Delete may not be possible if the category is associated to a product
-
-
-* `/api/ingredient` 
- * [`GET`] get all ingredients
-
- Parameters: None
-
- Return: Json response on success (200) 
-
- * [`POST`] add one ingredients
-
- Json parameters[required]:
-    `name:string`
-    `unitPrice:float`
-    `stock:float`
-
- Return: Json response on success (201) with ingredient data, or error (400)
+        Note: Delete may not be possible if the category is associated to a product
 
 
-* `/api/ingredient/:_id` 
+**`/api/ingredient`** 
+    * [`GET`] get all ingredients
 
- * [`GET`] get a single ingredient
+        Parameters: None
 
- Url parameter: 
-    `_id:integer`
+        Return: Json response on success (200) 
 
- Return: Json response on success (200) with ingredient data, or HttpNotFound(404)
+    * [`POST`] add one ingredients
+
+        Json parameters[required]:
+            `name:string`
+            `unitPrice:float`
+            `stock:float`
+
+        Return: Json response on success (201) with ingredient data, or error (400)
+
+
+**`/api/ingredient/:_id`**
+    * [`GET`] get a single ingredient
+
+        Url parameter: 
+            `_id:integer`
+
+        Return: Json response on success (200) with ingredient data, or HttpNotFound(404)
  
- * [`PUT`] update a single ingredient
+    * [`PUT`] update a single ingredient
 
- Url parameter: 
-    `_id:integer`
+        Url parameter: 
+            `_id:integer`
 
- Json parameters[required]:
-    `name:string`
-    `unitPrice:float`
-    `stock:float`
+        Json parameters[required]:
+            `name:string`
+            `unitPrice:float`
+            `stock:float`
 
- Return: Json response on success (200) with ingredient data, or HttpNotFound(404)
+        Return: Json response on success (200) with ingredient data, or HttpNotFound(404)
  
- * [`DELETE`] delete an ingredient
+    * [`DELETE`] delete an ingredient
 
- Url parameter: 
-    `_id:integer`
+        Url parameter: 
+            `_id:integer`
 
- Return: Response code (204) on success with empty body, or HttpNotFound (404)
+        Return: Response code (204) on success with empty body, or HttpNotFound (404)
 
- Note: Delete may not be possible if the ingredient is associated to a product
+        Note: Delete may not be possible if the ingredient is associated to a product
 
 
-* `/api/product` 
+**`/api/product`**
 
- * [`GET`] get the list of all products
+    * [`GET`] get the list of all products
 
- Parameters: None
+        Parameters: None
 
- Return: Json response on success (200) 
+        Return: Json response on success (200) 
 
- * [`POST`] add one new product
+    * [`POST`] add one new product
 
- Json parameter[required]:
-    `name:string`
-    `price:float`
-    `Category_id:Category` *Category_id must have already been created*
+        Json parameter[required]:
+            `name:string`
+            `price:float`
+            `Category_id:Category` *Category_id must have already been created*
 
- Return: Json response on success (201) with new product data, or error (400)
+        Return: Json response on success (201) with new product data, or error (400)
 
-* `/api/product/:_id` 
+**`/api/product/:_id`**
 
- * [`GET`] get one product
+    * [`GET`] get one product
 
- Url parameter:
-    `_id:integer`
+    Url parameter:
+        `_id:integer`
 
- Return: Json response on success (200) with product data, or HttpNotFound(404)
+    Return: Json response on success (200) with product data, or HttpNotFound(404)
 
- * [`PUT`] update a single product
+    * [`PUT`] update a single product
 
- Url parameter: 
-    `_id:integer`
+    Url parameter: 
+        `_id:integer`
 
- Json parameter[required]:
-    `name:string`
-    `price:float`
-    `Category_id:Category` *Category_id must have already been created*
+    Json parameter[required]:
+        `name:string`
+        `price:float`
+        `Category_id:Category` *Category_id must have already been created*
 
- Return: Json response on success (200) with new product data, or error (400)
+    Return: Json response on success (200) with new product data, or error (400)
 
  * [`DELETE`] delete one product
 
@@ -199,22 +198,22 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
 
  Note: Delete may not be possible if the product is associated to a ingredient
 
-* `/api/product/:_id/ingredient/:Ing_id` 
- * [`PUT`] create association between product and ingredient
+**`/api/product/:_id/ingredient/:Ing_id`** 
+    * [`PUT`] create association between product and ingredient
 
- Url parameter: 
-    `_id:integer`
-    `Ing_id:integer`
+        Url parameter: 
+            `_id:integer`
+            `Ing_id:integer`
 
- Return: Json response on success (200) with new assocation data, or HttpNotFound (400) if one of the object cannot be found
+        Return: Json response on success (200) with new assocation data, or HttpNotFound (400) if one of the object cannot be found
 
- * [`DELETE`] delete association between product and ingredient
+    * [`DELETE`] delete association between product and ingredient
 
- Url parameter: 
-    `_id:integer`
-    `Ing_id:integer`
-    
- Return: Response code (204) on success with empty body, or HttpNotFound (404)
+        Url parameter: 
+            `_id:integer`
+            `Ing_id:integer`
+
+        Return: Response code (204) on success with empty body, or HttpNotFound (404)
 
 # How to Install
 
