@@ -1,5 +1,4 @@
 /.gitignore
-/.sequelizerc
 /node_modules/
 /log/
 .env
