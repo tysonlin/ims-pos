@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "SET NODE_ENV=development&&nodemon ./bin/www",
-    "test": "SET NODE_ENV=test&& mocha ./tests",
+    "test": "mocha ./server/tests",
     "start": "nodemon --exec \"node -r dotenv/config\" ./bin/www"
   },
   "repository": {

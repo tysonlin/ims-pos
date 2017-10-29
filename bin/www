@@ -9,3 +9,5 @@ const server = http.createServer(app);
 server.listen(port, () => {
     logger.verbose(`express server started. Listening on port: ${port}...`);
 });
+
+module.exports = app;

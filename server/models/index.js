@@ -22,9 +22,9 @@ if (config.use_env_variable) {
 }
 
 // verify connection
-sequelize.authenticate()
-  .then(err => logger.info("Sequelize connection verified"))
-  .catch(err => logger.error(err))
+// sequelize.authenticate()
+//   .then(err => logger.info("Sequelize connection verified"))
+//   .catch(err => logger.error(err))
 
 fs
   .readdirSync(__dirname)
