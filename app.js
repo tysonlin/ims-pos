@@ -21,7 +21,10 @@ const { unhandledExceptionsHandler } = require('./server/handlers/err-handler');
 
 const app = express();
 
+const env = process.env.NODE_ENV || 'developement';
+
 logger.verbose('express app initialized');
+logger.info(`app running on '${env}' environment`);
 logger.verbose('winston initialized');
 logger.verbose(`log directory: '${process.env.LOG_DIR || './log'}'`);
 

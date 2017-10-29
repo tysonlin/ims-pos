@@ -4,8 +4,9 @@
   "description": "RESTful API app for inventory management system POS used by multi-outlets restaurant chain",
   "main": "index.js",
   "scripts": {
-    "start:dev": "SET NODE_ENV=development&& nodemon ./bin/www",
-    "test": "SET NODE_ENV=test&& mocha ./tests"
+    "start:dev": "SET NODE_ENV=development&&nodemon ./bin/www",
+    "test": "SET NODE_ENV=test&& mocha ./tests",
+    "start": "nodemon --exec \"node -r dotenv/config\" ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -28,10 +29,12 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "extend-error": "0.0.2",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
+    "nodemon": "^1.12.1",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1",
     "pg": "^7.3.0",
@@ -40,6 +43,8 @@
     "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.0.1"
   }
 }
