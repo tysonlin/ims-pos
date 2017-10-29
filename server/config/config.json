@@ -8,9 +8,19 @@
     "dialect": "postgres"
   },
   "test": {
-    "use_env_variable": "DATABASE_URL"
+    "username": "qowimspe",
+    "password": "vkWBrr-2vgNBtGJMhOlxrcWqQFDsgG-a",
+    "database": "qowimspe",
+    "host": "lmer.db.elephantsql.com",
+    "port": 5432,
+    "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL"
+    "username": "master",
+    "password": "Master01",
+    "database": "ims_pos_prod",
+    "host": "ims-pos.crgvubr84agl.us-east-2.rds.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres"
   }
 }
