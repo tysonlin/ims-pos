@@ -13,19 +13,24 @@ RESTful API app for inventory management system POS used by multi-outlets restau
 
 # List of user endpoints
 
-`/user/register `
+**`/user/register `**
 
 * [`POST`] register a new user account for api access authentication
 
    *Json parameters*[required]: 
    `username:string` (allow A-Z, a-z, 0-9, more than 4 characters)
+
    `password:string` (allow A-Z, a-z, 0-9, special chars in [#$@!%&*?], 4-30 characters)
+
    `name:string` (allow A-Z, a-z, spaces, special chars in ['.-], more than 2 characters)
+
    `email:string`
 
    *Return*: Json response on success (201) with new user data, or bad input and other errors (400)
 
-`/user/auth `
+  ​
+
+**`/user/auth `**
 
 * [`POST`] authenticate the registered user's credentials to retrieve the authentication token
 
@@ -62,7 +67,7 @@ After authenticating with `/user/auth `, include the `token` value at the header
 Example:
 
 ```bash
-curl -G /api/category --header "Authentication:<--Your token here-->"
+curl -G <--hostname-->/api/category --header "Authentication:<--Your token here-->"
 ```
 
 
@@ -149,7 +154,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
 
 * [`PUT`] update a single ingredient
 
-    *Url paramete*r:  `_id:integer`
+    *Url parameter*r:  `_id:integer`
 
     *Json parameters*[required]: `name:string` `unitPrice:float` `stock:float`
 
@@ -226,7 +231,7 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
 
   ​    *Url parameter*:  `_id:integer` `Ing_id:integer`
 
-  ​    *Return*: Json response on success (200) with new assocation data, or HttpNotFound (400) if one of the object cannot be found
+  ​    *Return*: Json response on success (200) with new association data, or HttpNotFound (400) if one of the object cannot be found
 
   ​
 
@@ -240,10 +245,66 @@ curl -G /api/category --header "Authentication:<--Your token here-->"
 
 # How to Install
 
+After installing `npm` and `git` in your machine, clone the repository and do `npm install` as follow:
+
+```bash
+git clone https://github.com/tysonlin/ims-pos.git
+cd ims-pos
+npm install
+```
+
+
+
+Load your database connection string into the environment variable, and do `sequelize db:migrate` to initialize the database tables:
+
+```bash
+DATABASE_URL=your_database_url
+"./node_modules/.bin/sequelize" db:migrate --env production
+```
+
+
+
+The app loads the environment variable by reading `.env` file in the root directory of the project. Create `.env` file with environment variable in line with following:
+
+```bash
+touch .env
+```
+
+```
+# .env file
+NODE_ENV=production
+LOG_LEVEL=verbose
+LOG_DIR=./log
+PORT=80
+DATABASE_URL=your_database_url
+```
+
+`NODE_ENV` (required, prefer `production`) indicates the environment context which the app would execute on
+
+`DATABASE_URL` (required) is your database connection string
+
+`LOG_LEVEL` filters the log level the app would put in the log file and console. The level follows that of the `npm` log level: `[silly|debug|verbose|info|warn|error]`
+
+`LOG_DIR` is the location the log files would be created at, defaults at `./log`
+
+`PORT` is the port number that the app would run on, defaults at `8000`
+
+
+
+After `.env` file is setup, start app by using:
+
+```
+npm start
+```
+
+
+
 
 
 # Improvement Ideas
 
-
-
-
+* Several value-added functions that has real business use cases, such as:
+  * **`/api/product/margin/`** which would calculate the basic profit margin of each product (product price minus sum of all ingredients' price)
+  * **`/api/product/stock/`** which would calculate how many more servings of each product the restaurant has left, based on the amount of the product's ingredient
+* Organize `Product`/`Ingredient` json output to not include the join table (`Product_Ingredient`)
+* Get unit test (mocha, chai-http) working
