@@ -6,11 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Ingredient.associate = (models) => {
-    Ingredient.belongsToMany(models.Product, { 
-        as: 'Product',
-        through: models.Product_Ingredient,
-        foreignKey: 'Product_id'
-      });
+    Ingredient.hasMany(models.Product_Ingredient, { foreignKey: 'Ingredient_id' });
   }
 
   return Ingredient;

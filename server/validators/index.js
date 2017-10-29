@@ -3,16 +3,26 @@ const { validCharacters, onlyNumbers } = require('./regex');
 const logger = require('../log');
 
 module.exports = {
-    checkNotFound: (err_msg, data) => {
+    shouldExist: (err_msg, data) => {
         return new Promise( (resolve) => {
-            if(!data) { // data is null
+            if(!data || data.length == 0) { // data is null or empty set
                 const message =   err_msg || 'Data not found';
                 throw new HttpNotFound(message);
             }
             resolve(data);
         } );
     },
-    checkValidStrings: (err_msg, data) => {
+    shouldNotExist: (err_msg, data) => {
+        return new Promise( (resolve) => {
+            logger.debug(`shouldNotExist: data [${data}] len [${data.length}] `);
+            if(data && data.length > 0) { // data is not null and set has more then one entry
+                const message =   err_msg || 'Data should not exist';
+                throw new ClientError(message);
+            }
+            resolve(data);
+        } );
+    },
+    shouldBeValidStrings: (err_msg, data) => {
         return new Promise( (resolve) => {
             var valid = true;
             if(!data) { // data is null
@@ -20,7 +30,7 @@ module.exports = {
             }
             else{
                 for(var i in data){
-                    logger.debug(`checkValidStrings: data[${data[i]}] type ${typeof(data[i])}`);
+                    logger.debug(`shouldBeValidStrings: data[${data[i]}] type ${typeof(data[i])}`);
                     if(!data[i] || data[i] === '' || !validCharacters(data[i])){
                         valid = false;
                         break;
@@ -37,7 +47,7 @@ module.exports = {
             }
         });
     },
-    validateIdInput: (data) => {
+    shouldBeValidIds: (data) => {
         return new Promise( resolve => {
             var valid = true;
             if(!data) { // data is null
@@ -46,7 +56,7 @@ module.exports = {
             else{
                 for(var i in data){
                     const num = data[i];
-                    logger.debug(`checkIdInput: num [${num}]`);
+                    logger.debug(`shouldBeValidId: num [${num}]`);
                     if(!num || !onlyNumbers(num) || parseInt(num) < 0) {
                         valid = false;
                         break;

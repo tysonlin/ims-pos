@@ -5,6 +5,7 @@ const userCtrl = require('../controllers').users;
 const categoryCtrl = require('../controllers').categories;
 const ingredientCtrl = require('../controllers').ingredients;
 const productCtrl = require('../controllers').products;
+const prodIngCtrl = require('../controllers').products_ingredients;
 
 router.route('/register')
         .post(userCtrl.create);
@@ -37,7 +38,8 @@ router.route('/product/:_id')
         .delete(productCtrl.delete);
 
 router.route('/product/:_id/ingredients/:Ing_id')
-        .put(productCtrl.putIngredient);
+        .put(prodIngCtrl.associate)
+        .delete(prodIngCtrl.dissociate);
 
 
 

@@ -29,7 +29,7 @@ app.use('/api', ApiRoutes);
 const routeNameParser = require('./server/log/route-name-parser');
 logger.verbose(`/api/<routes> established: ${routeNameParser.listAllLogStr(ApiRoutes.stack)}`);
 
-app.use(['*','/api'], (req, res) => res.status(200).json({
+app.use('*', (req, res) => res.status(200).json({
     msg: 'Welcome. Please refer to /api/<routes>, where <routes> are the following to access functionalities',
     routes: routeNameParser.listAllJson(ApiRoutes.stack)
 }));
