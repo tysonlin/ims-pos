@@ -36,7 +36,7 @@ RESTful API app for inventory management system POS used by multi-outlets restau
 * [`POST`] register a new user account for api access authentication
 
    *Json parameters*[required]: 
-   
+
 
   `username:string` (allow A-Z, a-z, 0-9, more than 4 characters)
 
@@ -243,10 +243,10 @@ curl -G <--hostname-->/api/category --header "Authentication:<--Your token here-
 
     *Url parameter*: `_id:integer`
 
-
     *Return*: Response code (204) on success with empty body, or HttpNotFound (404)
 
     *Note*: Delete may not be possible if the product is associated to a ingredient
+
 
    ​
 
@@ -303,6 +303,7 @@ LOG_LEVEL=verbose
 LOG_DIR=./log
 PORT=80
 DATABASE_URL=your_database_url
+SECRET=some_random_key_string
 ```
 
 `NODE_ENV` (required, prefer `production`) indicates the environment context which the app would execute on
@@ -314,6 +315,8 @@ DATABASE_URL=your_database_url
 `LOG_DIR` is the location the log files would be created at, defaults at `./log`
 
 `PORT` is the port number that the app would run on, defaults at `8000`
+
+`SECRET` is the random string to seed the encryption process in authentication
 
 
 
@@ -333,4 +336,5 @@ npm start
   * **`/api/product/margin/`** which would calculate the basic profit margin of each product (product price minus sum of all ingredients' price)
   * **`/api/product/stock/`** which would calculate how many more servings of each product the restaurant has left, based on the amount of the product's ingredient
 * Organize `Product`/`Ingredient` json output to not include the join table (`Product_Ingredient`)
-* Get unit test (mocha, chai-http) working
+* Build the front-end (Angular, React) to interface with the API
+* Get unit test (mocha, chai-http) working fully
