@@ -36,7 +36,9 @@ RESTful API app for inventory management system POS used by multi-outlets restau
 * [`POST`] register a new user account for api access authentication
 
    *Json parameters*[required]: 
-   `username:string` (allow A-Z, a-z, 0-9, more than 4 characters)
+   
+
+  `username:string` (allow A-Z, a-z, 0-9, more than 4 characters)
 
    `password:string` (allow A-Z, a-z, 0-9, special chars in [#$@!%&*?], 4-30 characters)
 
