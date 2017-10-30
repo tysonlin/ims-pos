@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "SET NODE_ENV=development&&nodemon ./bin/www",
     "test": "mocha ./server/tests",
-    "start": "nodemon --exec \"node -r dotenv/config\" ./bin/www"
+    "start": "forever start -w -c node -r dotenv/config ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "extend-error": "0.0.2",
+    "forever": "^0.15.3",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1",
