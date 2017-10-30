@@ -13,11 +13,8 @@
     "url": "git+https://github.com/tysonlin/ims-pos.git"
   },
   "keywords": [
-    "RESTful",
-    "API",
-    "Inventory",
-    "Management",
-    "System"
+    "RESTful API",
+    "Inventory Management System"
   ],
   "author": "Tyson Lin (Thanyapat Sirisongkol)",
   "license": "ISC",

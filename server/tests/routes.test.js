@@ -313,6 +313,86 @@ describe('Routes: ', () => {
         
     })
 
+    describe('GET /product', () => {
+        it('should return failure - no auth', (done) => {
+            chai.request(server)
+            .get('/api/product')
+            .end( (err, res) => {
+                should.exist(err);
+                res.status.should.eql(401);
+                res.should.be.json;
+                res.body.success.should.eql(false);
+                done();
+            })
+        })
+
+        
+    })
+
+    describe('POST /product', () => {
+        it('should return failure - no auth', (done) => {
+            chai.request(server)
+            .post('/api/product')
+            .end( (err, res) => {
+                should.exist(err);
+                res.status.should.eql(401);
+                res.should.be.json;
+                res.body.success.should.eql(false);
+                done();
+            })
+        })
+
+        
+    })
+
+    describe('GET /product/:id', () => {
+        it('should return failure - no auth', (done) => {
+            chai.request(server)
+            .get('/api/product/1')
+            .end( (err, res) => {
+                should.exist(err);
+                res.status.should.eql(401);
+                res.should.be.json;
+                res.body.success.should.eql(false);
+                done();
+            })
+        })
+
+        
+    })
+
+    describe('PUT /product/:id', () => {
+        it('should return failure - no auth', (done) => {
+            chai.request(server)
+            .put('/api/product/1')
+            .end( (err, res) => {
+                should.exist(err);
+                res.status.should.eql(401);
+                res.should.be.json;
+                res.body.success.should.eql(false);
+                done();
+            })
+        })
+
+        
+    })
+
+    describe('DELETE /product/:id', () => {
+        it('should return failure - no auth', (done) => {
+            chai.request(server)
+            .delete('/api/product/1')
+            .end( (err, res) => {
+                should.exist(err);
+                res.status.should.eql(401);
+                res.should.be.json;
+                res.body.success.should.eql(false);
+                done();
+            })
+        })
+
+        
+    })
+
     after( () => {
         process.exit(0);
     })
