@@ -1,4 +1,5 @@
 /.gitignore
 /node_modules/
 /*log/
-/*/*.env
+server/tests/test.env
+.env
