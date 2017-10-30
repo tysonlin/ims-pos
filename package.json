@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "SET NODE_ENV=development&&nodemon ./bin/www",
     "test": "mocha ./server/tests",
-    "start": "forever start -w --watchIgnore */*.log -o ./log/forever.log -e ./log/forever_err.log -c node ./bin/www"
+    "start": "forever start -c node ./bin/www"
   },
   "repository": {
     "type": "git",
