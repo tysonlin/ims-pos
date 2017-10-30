@@ -22,7 +22,7 @@ module.exports = {
     list: (req, res, next) => {
         return Product.findAll({ order: [ 'name' ], include: 
             ['Category', { model: Product_Ingredient, include: [Ingredient] }] })
-        .then(successResponse.bind(null, res, 201, 'Get all products successful'))
+        .then(successResponse.bind(null, res, 200, 'Get all products successful'))
         .catch(failureResponse.bind(null, res));
     },
     retrieve: (req, res, next) => {

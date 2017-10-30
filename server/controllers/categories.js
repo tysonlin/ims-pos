@@ -11,7 +11,7 @@ module.exports = {
     },
     list: (req, res, next) => {
         return Category.findAll({ order: [ 'name' ]})
-        .then(successResponse.bind(null, res, 201, 'Get all category successful'))
+        .then(successResponse.bind(null, res, 200, 'Get all category successful'))
         .catch(failureResponse.bind(null, res));
     },
     retrieve: (req, res, next) => {

@@ -18,7 +18,7 @@ module.exports = {
     },
     list: (req, res, next) => {
         return Ingredient.findAll({ order: [ 'name' ], include: [ { model: Product_Ingredient, include: [Product] } ]})
-        .then(successResponse.bind(null, res, 201, 'Get all ingredients successful'))
+        .then(successResponse.bind(null, res, 200, 'Get all ingredients successful'))
         .catch(failureResponse.bind(null, res));
     },
     retrieve: (req, res, next) => {
