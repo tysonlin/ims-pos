@@ -1,15 +1,33 @@
 # Inventory Management System POS
 RESTful API app for inventory management system POS used by multi-outlets restaurant chain
 
+
+
 # Data Relationships
 
 `Product`: consists of `name` and `price`, belongs to one `Category`, and has many `Ingredients`
 
+​	Product would represent a food or drink in the restaurant's menu. One product would have a defined price tag on it, and would have to be cooked or served using a defined set of raw ingredients.
+
+
+
 `Ingredient`: consists of `name`, `unitPrice`, `stock`, and can be a part of many `Products`
+
+​	Ingredient represents the individual raw ingredients that would have been consumed when a product dish is served. An ingredient has its own unit price, and the stock number tells how much does the restaurant has left of an ingredient.
+
+
 
 `Category`: only has `name`
 
+​	Category is the variety of product set that the restaurant has to offer.
+
+
+
 `User`: contain a unique `username`, `password`, `name`, and `email`
+
+​	User represents the restaurant staff or owner who uses this system. This model is purely for authentication purposes.
+
+
 
 # List of user endpoints
 
@@ -60,6 +78,8 @@ RESTful API app for inventory management system POS used by multi-outlets restau
 
 
 
+
+
 # Authentication
 
 After authenticating with `/user/auth `, include the `token` value at the header of every requests to the /api routes.
@@ -69,6 +89,8 @@ Example:
 ```bash
 curl -G <--hostname-->/api/category --header "Authentication:<--Your token here-->"
 ```
+
+
 
 
 
@@ -241,7 +263,9 @@ curl -G <--hostname-->/api/category --header "Authentication:<--Your token here-
 
     *Return*: Response code (204) on success with empty body, or HttpNotFound (404)
 
-    ​
+
+
+
 
 # How to Install
 
